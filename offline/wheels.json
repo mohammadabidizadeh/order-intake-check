@@ -170,24 +170,24 @@
   },
   {
     "name": "pydantic",
-    "version": "2.12.4",
-    "file": "pydantic-2.12.4-py3-none-any.whl",
-    "sha256": "92d3d202a745d46f9be6df459ac5a064fdaa3c1c4cd8adcfa332ccf3c05f871e",
-    "wheel_url": "https://files.pythonhosted.org/packages/82/2f/e68750da9b04856e2a7ec56fc6f034a5a79775e9b9a81882252789873798/pydantic-2.12.4-py3-none-any.whl",
-    "source_release": "https://pypi.org/project/pydantic/2.12.4/#files",
+    "version": "2.14.4",
+    "file": "pydantic-2.14.4-py3-none-any.whl",
+    "sha256": "653a2ad9f6d8858529c77c72717d0ea991d6c6837fe683246b2f4b2bbfc3fadc",
+    "wheel_url": "https://files.pythonhosted.org/packages/8a/8c/824a686c4ba815ddb0722f9e66272088bccd4e1ae1d2f7015375e4a4fc7f/pydantic-2.14.4-py3-none-any.whl",
+    "source_release": "https://pypi.org/project/pydantic/2.14.4/#files",
     "embedded_notices": [
-      "pydantic-2.12.4.dist-info/licenses/LICENSE"
+      "pydantic-2.14.4.dist-info/licenses/LICENSE"
     ]
   },
   {
     "name": "pydantic-core",
-    "version": "2.41.5",
-    "file": "pydantic_core-2.41.5-cp314-cp314-win_amd64.whl",
-    "sha256": "8e7c86f27c585ef37c35e56a96363ab8de4e549a95512445b85c96d3e2f7c1bf",
-    "wheel_url": "https://files.pythonhosted.org/packages/48/5d/56ba7b24e9557f99c9237e29f5c09913c81eeb2f3217e40e922353668092/pydantic_core-2.41.5-cp314-cp314-win_amd64.whl",
-    "source_release": "https://pypi.org/project/pydantic-core/2.41.5/#files",
+    "version": "2.50.5",
+    "file": "pydantic_core-2.50.5-cp314-cp314-win_amd64.whl",
+    "sha256": "887424ba7c2145e97f131bc2cc73383a8c464d7bcd56eb98bbd941afb6868b95",
+    "wheel_url": "https://files.pythonhosted.org/packages/bd/da/feb489c6252364355d1f314a284a542cd6788cebe83f9507d4af81c95f4a/pydantic_core-2.50.5-cp314-cp314-win_amd64.whl",
+    "source_release": "https://pypi.org/project/pydantic-core/2.50.5/#files",
     "embedded_notices": [
-      "pydantic_core-2.41.5.dist-info/licenses/LICENSE"
+      "pydantic_core-2.50.5.dist-info/licenses/LICENSE"
     ]
   },
   {

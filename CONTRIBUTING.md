@@ -4,4 +4,6 @@ Describe a rule change with a small synthetic file and its expected order-level 
 
 For an HTTP contract change, regenerate `docs/openapi.json`. For a dependency change, update the platform pins, rebuild the Windows inventory and hash lock, retain upstream notices and repeat the offline installation. Document user-visible changes in the changelog.
 
-Use invented examples in source control. The ZIP is a clean source snapshot. Earlier private planning documents and the original local history remain in the owner's 0.1.0 archive. Review history, authorship, data rights and the intended license before making a repository public.
+Use invented order and catalog values in examples, tests and pull requests. For a suspected vulnerability, follow the [private reporting instructions](SECURITY.md#report-a-vulnerability).
+
+Submit only work you have permission to contribute. Unless explicitly stated otherwise, contributions intentionally submitted for inclusion are subject to section 5 of the Apache License, Version 2.0. Identify third-party material, its source and its terms, and preserve required notices. [Project license](LICENSE) · [Dependency provenance](docs/dependencies.md)

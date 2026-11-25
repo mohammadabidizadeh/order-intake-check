@@ -27,4 +27,8 @@ Each command should exit 0. A check that unexpectedly succeeds raises an SQL err
 
 ## CI
 
-The workflow defines Windows and Ubuntu test jobs and a disposable PostgreSQL 18 service. GitHub Actions results become available after an owner-authorized run. The workflow does not deploy the application.
+The workflow runs dependency checks, pytest and the live smoke test on Windows Server 2022 and Ubuntu 24.04. A separate job initializes PostgreSQL 18, installs the schema and runs its constraints twice. All three jobs passed for `fc5c18d`. [Hosted verification](verification.md#github-actions)
+
+## Preparing a release
+
+Choose the commit to distribute. Confirm the version in `ordercheck/__init__.py`, the OpenAPI snapshot and the changelog. Check the workflow result for that exact commit before tagging it. Read the source files, license, notices and wheel inventory from the commit. Add only the wheels whose names and SHA-256 digests match that inventory. Extract the finished ZIP into a fresh directory, compare its source files to the Git blobs, install with the Windows hash lock and run the tests and smoke check there. Include the full commit ID in the release notes and the ZIP digest in `SHA256SUMS`.

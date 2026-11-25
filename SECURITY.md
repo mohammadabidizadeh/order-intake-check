@@ -8,4 +8,12 @@ Both input files have a 512 KiB and 5,000-record ceiling. The API checks cumulat
 
 The body deadline starts after authorization. Header reception, machine access, client-side retention and protection from another local process are workstation or server concerns. Shared hosting would require an authentication and isolation design, TLS, request and connection controls at ingress, and operational monitoring. The current support boundary is a single local operator.
 
-Use synthetic examples in bug reports. Report the version, logical record, issue code and expected outcome to the owner through a private channel. Keep customer files, credentials, screenshots containing identifiers and actual catalogs outside the repository. Review the dated [dependency checks](docs/dependencies.md) before using a new release.
+## Native dependency advisory
+
+The Windows pydantic-core 2.50.5 wheel lists Rust `url` 2.5.8 in its software bill of materials. RustSec reports a denial of service in the URL origin operation, fixed in `url` 2.5.9. Order Intake Check accepts CSV identifiers and quantities. Its preview API has no URL-typed business field, and the source review found no origin call on supplied data. Exploitability through this application has not been established. Reassess before adding URL inputs and adopt a compatible upstream wheel with the fix when available. The standalone CLI has no Pydantic dependency. [RustSec advisory](https://rustsec.org/advisories/RUSTSEC-2026-0592.html)
+
+## Report a vulnerability
+
+On the repository's [Security advisories page](https://github.com/mohammadabidizadeh/order-intake-check/security/advisories), use **Report a vulnerability** if the button is available. If it is unavailable, contact the maintainer through an existing private channel. If you have no private contact, request one in a repository issue using only the subject “Private security contact requested”. Share technical details after the maintainer establishes a private channel.
+
+Include the version or commit, expected behavior and a minimal example with invented identifiers. Keep tokens, customer files, real mappings and identifying screenshots out of reports. Review the dated [dependency checks](docs/dependencies.md) before using a new release.

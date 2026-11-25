@@ -1,8 +1,28 @@
 # Verification record for 0.1.1
 
-24 November 2026. Windows 10 x64 (build 19045), standard CPython 3.14.10 and PostgreSQL 18.6 x64. All order data were synthetic. The ZIP supplied for review had SHA-256 `dc846b4a8baec06d724851d3a29be9ecbaa690c94cf5865ff459d1f5620638c2`. All 38 tracked files matched the three-commit Git bundle at `15f8dfb`. The review covered the application, scripts, fixtures, SQL, workflow, documentation, OpenAPI, wheel inventory and embedded distribution records.
+## GitHub Actions
 
-## Reproduced results
+On 25 November 2026, GitHub recorded a successful push run of `Verify preview` on `main` at `fc5c18d466899b02a29ade897787e76ef81b0af6`. Run 45570396805, attempt 1, finished at 07:44:16 UTC. The run and all three job conclusions were checked through the GitHub API. [Workflow run](https://github.com/mohammadabidizadeh/order-intake-check/actions/runs/45570396805)
+
+| Job | Steps completed successfully |
+|---|---|
+| [Windows Server 2022](https://github.com/mohammadabidizadeh/order-intake-check/actions/runs/45570396805/job/139055335503) | Hash-checked installation, pip check, pytest and live CLI/API smoke test |
+| [Ubuntu 24.04](https://github.com/mohammadabidizadeh/order-intake-check/actions/runs/45570396805/job/139055335540) | Dependency installation, pip check, pytest and live CLI/API smoke test |
+| [Database schema](https://github.com/mohammadabidizadeh/order-intake-check/actions/runs/45570396805/job/139055335035) | PostgreSQL container startup, schema installation and two constraint runs |
+
+This hosted run precedes the Apache-2.0 release changes and the Pydantic update. The release notes identify the exact Git commit used for the offline ZIP. Use that SHA when checking the subsequent hosted run.
+
+## Local checks of fc5c18d on 25 November 2026
+
+The checked-out branch, origin tracking branch and remote `main` all pointed to the commit above. On Windows, pytest reported 41 tests and 33 subtests passed. The standard-library suite passed all 17 tests on both CPython 3.14.10 and 3.15.2. The live CLI/HTTP check held PO-101 at record 5 and released both orders after correction.
+
+In a new PostgreSQL 18.6 cluster, the schema installed and the constraint suite passed twice. All five tables were empty after rollback. A concurrent insert on the same replay key and a conflicting external order were rejected. A custom-format dump restored matching table contents and identity sequence values in a fresh database. The constraint suite passed again after restore.
+
+The independent synthetic checks also passed for 200 interleaved files and 30 concurrent-client HTTP requests of 5,000 lines each. All order data used for verification were invented.
+
+## Local comparison on 24 November 2026
+
+The original baseline and revised implementation were exercised on Windows 10 x64 (build 19045), CPython 3.14.10 and PostgreSQL 18.6. The following comparison and performance measurements describe those earlier runs.
 
 | Check | 0.1.0 baseline | 0.1.1 review |
 |---|---|---|
@@ -11,7 +31,7 @@
 | Original and corrected CSV | 1 ready / 1 held, then 2 ready / 0 held | Same results. CLI exits 2 then 0. Live Uvicorn returned the complete CLI JSON for each file. Health and authentication also passed. |
 | Windows dependency installation | 23 wheels installed offline, pip check passed | Hash-checked offline install with a fresh environment and pip check. PyPI file digests, internal wheel records and notices checked. [Audit scope](dependencies.md) |
 | PostgreSQL schema | Installation and first check passed. Second run failed on a foreign key because the test assumed source ID 1. | Atomic DDL succeeded. Two successive constraint runs passed. All five tables remained empty after both rollbacks. |
-| Workflow | Supplied Linux and SQL jobs | actionlint 1.7.12 passed for the Windows/Linux/SQL workflow. Both action pins matched upstream tags. Hosted jobs and Linux execution remain unverified. |
+| Workflow | Supplied Linux and SQL jobs | actionlint 1.7.12 passed for the Windows/Linux/SQL workflow. Both action pins matched upstream tags. |
 
 The first baseline pytest attempt had 24 passes and one fixture setup error. The Windows default pytest temp directory denied access. Redirecting TEMP and TMP to a writable review directory produced the clean baseline above. No existing temp-directory ACL was changed.
 
@@ -45,4 +65,4 @@ In a separate loopback test, three clients completed 30 authenticated requests a
 
 ## Readiness
 
-The source and examples support a portfolio demonstration and a local read-only trial after an operator supplies an approved feed, mapping and answer key. Public licensing, authorized publication and hosted CI are outstanding. A production deployment would need a destination agreement, reconciliation, access controls and recovery appropriate to its operating model. Customer interviews, a paid trial, real-order accuracy and measured business savings have no evidence in this review. [Pilot acceptance](product.md) · [Reproduction commands](developer-guide.md)
+The source and examples support a portfolio demonstration and a local read-only trial after an operator supplies an approved feed, mapping and answer key. A production deployment would need a destination agreement, reconciliation, access controls and recovery appropriate to its operating model. Customer interviews, a paid trial, real-order accuracy and measured business savings have no evidence in this review. [Pilot acceptance](product.md) · [Reproduction commands](developer-guide.md)
