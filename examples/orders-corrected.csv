@@ -1,0 +1,5 @@
+order_id,line_id,source_sku,quantity
+PO-100,01,S-001,۲
+PO-101,01,S-002,4
+PO-100,02,00127,1
+PO-101,02,S-001,3
